@@ -78,9 +78,9 @@ async function checkOnce() {
       const delta = current - last;
       const sign = delta >= 0 ? "+" : "";
       const nextGoal = getNextGoal(current);
-      const goalText = nextGoal ? ` The next goal is ${nextGoal.text}!` : ' All remaining support will go to improving the game!';
+      const goalText = nextGoal ? `The next goal is ${nextGoal.text} at **${nextGoal.cost}**!` : 'All remaining support will go to improving the game!';
       await targetChannel.send(
-        `New Kickstarter backer! Thank you! **${fmtMoney(current)}** (${sign}${fmtMoney(delta)}).${goalText} <${KICKSTARTER_URL}>`
+        `New Kickstarter backer! Thank you! **${fmtMoney(current)}** (${sign}${fmtMoney(delta)}). ${goalText} <${KICKSTARTER_URL}>`
       );
       state.lastAmount = current; saveState();
       console.log(`Posted update: ${last} -> ${current}`);
