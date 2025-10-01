@@ -67,7 +67,7 @@ client.once("clientReady", async () => {
 async function checkOnce() {
   try {
     const current = await fetchFundingAmount(KICKSTARTER_URL);
-    if (current == null) return;
+    if (current == null || current == 0) return;
 
     const last = state.lastAmount;
     if (last == null) {
