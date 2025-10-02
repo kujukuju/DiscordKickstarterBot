@@ -76,6 +76,9 @@ async function checkOnce() {
     }
     if (current !== last) {
       const delta = current - last;
+      if (delta < 0) {
+        return;
+      }
       const sign = delta >= 0 ? "+" : "";
       const nextGoal = getNextGoal(current);
       const goalText = nextGoal ? `The next goal is ${nextGoal.text} at **${fmtMoney(nextGoal.cost)}**!` : 'All remaining support will go to improving the game!';
